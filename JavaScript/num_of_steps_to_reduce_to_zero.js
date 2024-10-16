@@ -16,6 +16,11 @@
     Step 6) 1 is odd; subtract 1 and obtain 0.
  */
 
+/**
+ *
+ * @param {number} num
+ * @returns {number}
+ */
 const numberOfSteps = (num) => {
   let steps = 0;
   let numToReduce = num;
