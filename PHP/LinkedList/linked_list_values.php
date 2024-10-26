@@ -29,6 +29,14 @@ class Node {
         }
         return $LL_values;
     }
+
+    public static function LL_values_to_array_recursively(?Node $head) : array
+    {
+        if ($head === null) return [];
+        return [$head->value, ...self::LL_values_to_array_recursively($head->next)];
+    }
+
+
 }
 
 $a = new Node('A');
@@ -42,4 +50,8 @@ $c->next = $d;
 
 echo "<pre>";
 var_dump(Node::LL_values_to_array($a)); # output: ['A', 'B', 'C', 'D'];
+echo "</pre>";
+
+echo "<pre>";
+var_dump(Node::LL_values_to_array_recursively($a)); # output: ['A', 'B', 'C', 'D'];
 echo "</pre>";
