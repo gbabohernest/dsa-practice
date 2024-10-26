@@ -13,8 +13,8 @@ class Node {
     public $next;
 
     public function __construct(string $value) {
-            $this->value = $value;
-            $this->next = null;
+        $this->value = $value;
+        $this->next = null;
     }
 
     public static function print_LL(Node $head): void
@@ -25,6 +25,13 @@ class Node {
             echo "$current_node->value";
             $current_node = $current_node->next;
         }
+    }
+
+    public static function print_LL_Recursively(?Node $head): void {
+        # Base case
+        if ($head === null) return;
+        echo "$head->value";
+        self::print_LL_Recursively($head->next);
     }
 }
 
@@ -38,4 +45,7 @@ $a->next = $b;   $b->next = $c;  $c->next = $d;
 # a -> b -> c -> d -> null
 
 Node::print_LL($a); # Output : ABCD
+echo "<br/>";
+Node::print_LL_Recursively($a); # Output : ABCD
+
 
