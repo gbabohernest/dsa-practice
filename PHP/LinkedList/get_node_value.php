@@ -30,6 +30,14 @@ class Node {
         return null;
 
     }
+
+    public static function getNodeValueRecursively(?Node $head, int $index): ?int {
+
+        if ($head === null) return null;
+        if ($index === 0) return $head->value;
+
+        return self::getNodeValueRecursively($head->next, $index - 1);
+    }
 }
 
 
@@ -43,4 +51,9 @@ $a->next = $b;   $b->next = $c;  $c->next = $d;
 
 $result = Node::getNodeValue($a, 1); # Output : 2
 echo "$result";
+
+echo "<br/>";
+$result2 = Node::getNodeValueRecursively($a, 0); # Output: 1
+echo "$result2";
+
 
