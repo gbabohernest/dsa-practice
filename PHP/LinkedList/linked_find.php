@@ -6,17 +6,18 @@
  */
 
 
-class Node {
+class  Node
+{
     public int $value;
     public $next;
 
-    public function __construct( int $value)
+    public function __construct(int $value)
     {
         $this->value = $value;
         $this->next = null;
     }
 
-    public static function LL_find_value(Node $head, int  $target): bool
+    public static function LL_find_value(Node $head, int $target): bool
     {
         $current_node = $head;
 
@@ -27,6 +28,14 @@ class Node {
 
         return false;
     }
+
+    public static function LL_find_value_recursively(?Node $head, int $target): bool
+    {
+        if ($head === null) return false;
+        if ($head->value === $target) return true;
+
+        return self::LL_find_value_recursively($head->next, $target);
+    }
 }
 
 $a = new Node(20);
@@ -34,6 +43,10 @@ $b = new Node(30);
 $c = new Node(40);
 $d = new Node(50);
 
-$a->next = $b;  $b->next = $c;  $c->next = $d;
+$a->next = $b;
+$b->next = $c;
+$c->next = $d;
 
 var_dump(Node::LL_find_value($a, 40)); # Output: true
+
+var_dump(Node::LL_find_value_recursively($a, 90)); #Output: false
