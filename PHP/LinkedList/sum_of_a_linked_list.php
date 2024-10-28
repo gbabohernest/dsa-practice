@@ -30,6 +30,11 @@ class Node
         return $sum;
     }
 
+    public static function get_LL_sum_recursively(?Node $head): int
+    {
+        if ($head === null) return 0;
+        return $head->value += self::get_LL_sum_recursively($head->next);
+    }
 }
 
 
@@ -43,3 +48,4 @@ $b->next = $c;
 $c->next = $d;
 
 var_dump(Node::get_LL_sum($a)); # Output: 130
+var_dump(Node::get_LL_sum_recursively($a)); # Output: 130
