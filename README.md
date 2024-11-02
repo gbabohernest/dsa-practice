@@ -11,3 +11,16 @@ and technical interview skills.
  - Python 🐍
  - JavaScript 🛠️
  - PHP 🐘
+
+
+## Folder Structure
+
+ - `/python/`: Contains solutions written in Python.
+ - `/JavaScript`: Contains solutions written in JavaScript.
+ - `/PHP/`: Contains solutions written in PHP.
+
+
+
+## Contributions
+Feel free to fork this repository and suggest improvements or alternate solutions!  Open a pull request if you want to
+contribute.
