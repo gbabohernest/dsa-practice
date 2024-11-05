@@ -17,6 +17,19 @@ class Node
         $this->next = null;
     }
 
+    public static function insertNodeAtIndexRecursively(Node|null $head, int $value, int $index): Node
+    {
+
+        if ($index === 0) {
+            $newNode = new Node($value);
+            $newNode->next = $head;
+            return $newNode;
+        }
+
+        $head->next = Node::insertNodeAtIndexRecursively($head->next, $value, $index - 1);
+        return $head;
+    }
+
     public static function insertNodeAtIndexIteratively(Node $head, int $value, int $index): Node
     {
         $counter = 0;
@@ -71,10 +84,20 @@ $b->next = $c;
 $c->next = $d;
 
 # Test Run
-$headNode = Node::insertNodeAtIndexIteratively($a, 20, 0);
-Node::printLL($headNode); # output: 20 -> 2 -> 4 -> 6 -> 8
+
+$headNode = Node::insertNodeAtIndexRecursively($a, 100, 0);
+Node::printLL($headNode); # output: 100 -> 2 -> 4 -> 6 -> 8
+echo "<br>";
+echo "<br>";
+$headNode = Node::insertNodeAtIndexRecursively($headNode, 500, 4);
+Node::printLL($headNode); # output: 100 -> 2 -> 4 -> 6 -> 500 -> 8
+
+echo "<br>";
+echo "<br>";
+$headNode = Node::insertNodeAtIndexIteratively($headNode, 20, 0);
+Node::printLL($headNode); # output: 20 -> 100 -> 2 -> 4 -> 6 -> 500 -> 8
 
 echo "<br>";
 echo "<br>";
 $headNode = Node::insertNodeAtIndexIteratively($headNode, 5, 2);
-Node::printLL($headNode); # output: 20 -> 2 -> 5 -> 4 -> 6 -> 8
+Node::printLL($headNode); # output: 20 -> 100 -> 5 -> 2 -> 4 -> 6 -> 500 -> 8
