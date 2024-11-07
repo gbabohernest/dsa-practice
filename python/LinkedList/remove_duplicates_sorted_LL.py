@@ -24,6 +24,24 @@ class Node:
         self.next = None
 
     @staticmethod
+    def remove_dup_recursively(head: 'Node') -> 'Node' or None:
+        """
+        Recursively remove duplicates from a sorted List.
+        :param head: head node
+        :return: new head of sorted list
+        """
+
+        if head is None or head.next is None: return head
+
+        if head.data == head.next.data:
+            # skip duplicate
+            head.next = Node.remove_dup_recursively(head.next.next)
+        else:
+            head.next = Node.remove_dup_recursively(head.next)
+
+        return head
+
+    @staticmethod
     def remove_duplicates_frm_sorted_linked_list(head: 'Node') -> 'Node' or None:
         """
         Removes duplicates from a sorted single linked list
@@ -71,5 +89,7 @@ b.next = c
 c.next = d
 d.next = e
 
-new_sorted_list = Node.remove_duplicates_frm_sorted_linked_list(a)
-Node.print_ll(new_sorted_list) # output: 1 ==> 2 ==> 3
+# new_sorted_list = Node.remove_duplicates_frm_sorted_linked_list(a)
+
+new_sorted_list = Node.remove_dup_recursively(a)
+Node.print_ll(new_sorted_list)  # output: 1 ==> 2 ==> 3
