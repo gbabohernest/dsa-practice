@@ -23,6 +23,20 @@ class Node {
     }
   }
 
+  static removeDupFromSortedLLRecursively(head) {
+    // empty or single node list
+    if (head === null || head.next === null) return head;
+
+    if (head.data === head.next.data) {
+      // skip the duplicates
+      head.next = Node.removeDupFromSortedLLRecursively(head.next.next);
+    } else {
+      // move to the next node
+      head.next = Node.removeDupFromSortedLLRecursively(head.next);
+    }
+
+    return head;
+  }
   static removeDuplicatesFromSortedLLIteratively(head) {
     if (head === null || head.next === null) return head; // empty or single node list
 
@@ -51,5 +65,6 @@ c.next = d;
 d.next = e;
 // a -> b -> c -> d -> e
 
-const sortedList = Node.removeDuplicatesFromSortedLLIteratively(a);
+//const sortedList = Node.removeDuplicatesFromSortedLLIteratively(a);
+const sortedList = Node.removeDupFromSortedLLRecursively(a);
 Node.printLL(sortedList); // output:  1 -> 2 -> 3
