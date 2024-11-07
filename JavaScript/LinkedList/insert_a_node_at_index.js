@@ -11,6 +11,17 @@ class Node {
     this.next = null;
   }
 
+  static insertNodeAtIndexRecursively(head, data, index) {
+    if (index === 0) {
+      const newNode = new Node(data);
+      newNode.next = head;
+      return newNode;
+    }
+
+    head.next = Node.insertNodeAtIndexRecursively(head.next, data, index - 1);
+    return head;
+  }
+
   static printLL(head) {
     let currentNode = head;
 
@@ -61,6 +72,10 @@ C.next = D;
 console.log('Original Linked List:');
 Node.printLL(A); // 1 2 3 4
 
-console.log('After inserting a new node at index 2 with value 5:');
+console.log('After inserting a new node at index 0 with value 0:');
 const newHead = Node.insertNodeAtIndex(A, 0, 0);
 Node.printLL(newHead); // 0 1 2 3 4
+
+console.log('After inserting a new node at index 4 with value 6 recursively:');
+const newHeadRecursive = Node.insertNodeAtIndexRecursively(newHead, 6, 4);
+Node.printLL(newHeadRecursive); // 0 1 2 3 6 4
