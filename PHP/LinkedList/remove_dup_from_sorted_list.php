@@ -7,6 +7,7 @@
  * */
 
 
+
 class Node
 {
     public int $data;
@@ -18,6 +19,22 @@ class Node
         $this->next = null;
     }
 
+    /**
+     * Recursively remove duplicates values from a LL
+     * @param Node $head
+     * @return Node|null
+     */
+
+    public static function remove_duplicates_recursive(Node $head): Node|null
+    {
+        if ($head === null || $head->next === null) return $head;
+
+        if ($head->data === $head->next->data) $head->next = $head->next->next;
+
+        $head->next = self::remove_duplicates_recursive($head->next);
+
+        return $head;
+    }
 
     /**
      * Removes duplicates values from a sorted LL
@@ -79,5 +96,6 @@ echo "<br/>";
 echo "After sorting";
 echo "<br/>";
 
-$new_head = Node::remove_duplicates_sorted_LL($a);
+//$new_head = Node::remove_duplicates_sorted_LL($a);
+$new_head = Node::remove_duplicates_recursive($a);
 Node::print_LL($new_head); # 1 -> 2 -> 3
