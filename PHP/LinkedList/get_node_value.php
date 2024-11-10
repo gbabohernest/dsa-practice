@@ -7,6 +7,13 @@
 
 use LinkedList\NodeDefinition\Node;
 
+
+/**
+ * Return node's value or null at a given index.
+ * @param Node $head
+ * @param int $index
+ * @return int|null
+ */
 function getNodeValue(Node $head, int $index): ?int
 {
 
@@ -21,4 +28,18 @@ function getNodeValue(Node $head, int $index): ?int
     }
 
     return null;
+}
+
+/**
+ * Recursively get the value of a node at a given index.
+ * @param Node|null $head
+ * @param int $index
+ * @return int|null
+ */
+function getNodeValueRecursively(?Node $head, int $index) : ?int
+{
+    if ($head === null) return null;
+    if ($index === 0) return $head->data;
+    return getNodeValueRecursively($head->next, $index - 1);
+
 }

@@ -20,4 +20,6 @@ $c->next = $d;
 
 
 $nodeValue = getNodeValue($a, 2);
+$nodeValueRec = getNodeValueRecursively($a, 7);
 echo "$nodeValue"; # 3
+var_dump($nodeValueRec); # NULL
