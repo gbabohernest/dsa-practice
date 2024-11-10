@@ -3,6 +3,7 @@
 require_once "../LinkedList/NodeDefinition/Node.php";
 require_once "../LinkedList/get_node_value.php";
 require_once "../LinkedList/remove_dup_from_sorted_list.php";
+require_once "../LinkedList/insert_at_a_given_index.php";
 
 
 use LinkedList\NodeDefinition\Node;
@@ -26,5 +27,6 @@ $nodeValueRec = getNodeValueRecursively($a, 7);
 #var_dump($nodeValueRec); # NULL
 
 
-Node::printLL(remove_duplicates_sorted_LL($a)); # 1 -> 3
-Node::printLL(remove_duplicates_recursive($a)); # 1 -> 3
+# Node::printLL(remove_duplicates_sorted_LL($a)); # 1 -> 3
+# Node::printLL(remove_duplicates_recursive($a)); # 1 -> 3
+Node::printLL(insertNodeAtIndexIteratively($a, 0, 0)); # 0 -> 1 -> 1 -> 3 -> 3
