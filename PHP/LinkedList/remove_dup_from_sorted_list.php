@@ -6,96 +6,31 @@
  *
  * */
 
+use LinkedList\NodeDefinition\Node;
 
+/**
+ * Removes duplicates values from a sorted LL
+ * @param Node $head -> head of LL
+ * @return Node -> head of the new sorted LL
+ */
 
-class Node
+function remove_duplicates_sorted_LL(Node $head): Node
 {
-    public int $data;
-    public $next;
+    $currentNode = $head;
 
-    public function __construct(int $data)
-    {
-        $this->data = $data;
-        $this->next = null;
-    }
+    while ($currentNode !== null) {
+        $nextNode = $currentNode->next;
 
-    /**
-     * Recursively remove duplicates values from a LL
-     * @param Node $head
-     * @return Node|null
-     */
-
-    public static function remove_duplicates_recursive(Node $head): Node|null
-    {
-        if ($head === null || $head->next === null) return $head;
-
-        if ($head->data === $head->next->data) $head->next = $head->next->next;
-
-        $head->next = self::remove_duplicates_recursive($head->next);
-
-        return $head;
-    }
-
-    /**
-     * Removes duplicates values from a sorted LL
-     * @param Node $head -> head of LL
-     * @return Node -> head of the new sorted LL
-     */
-    public static function remove_duplicates_sorted_LL(Node $head): Node
-    {
-        $current_node = $head;
-
-        while ($current_node !== null) {
-            $next_node = $current_node->next;
-
-            if ($next_node !== null) {
-                if ($current_node->data === $next_node->data) {
-                    # skip the node, since the values are equal
-                    $current_node->next = $next_node->next;
-                }
+        if ($nextNode !== null) {
+            if ($currentNode->data === $nextNode->data) {
+                # skip the node, since the values are equal
+                $currentNode->next = $nextNode->next;
             }
-
-            $current_node = $next_node;
-
         }
-        return $head;
+
+        $currentNode = $nextNode;
+
+
     }
-
-    public static function print_LL(Node $head): void
-    {
-        $current_node = $head;
-
-        while ($current_node !== null) {
-            if ($current_node->next !== null) {
-                echo "$current_node->data" . " ==> ";
-            } else {
-                echo "$current_node->data";
-
-            }
-
-            $current_node = $current_node->next;
-        }
-    }
+    return $head;
 }
-
-
-$a = new Node(1);
-$b = new Node(1);
-$c = new Node(2);
-$d = new Node(2);
-$e = new Node(3);
-$a->next = $b;
-$b->next = $c;
-$c->next = $d;
-$d->next = $e;
-
-
-Node::print_LL($a);
-
-echo "<br/>";
-echo "After sorting";
-echo "<br/>";
-
-//$new_head = Node::remove_duplicates_sorted_LL($a);
-$new_head = Node::remove_duplicates_recursive($a);
-Node::print_LL($new_head); # 1 -> 2 -> 3
