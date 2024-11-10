@@ -34,3 +34,24 @@ function remove_duplicates_sorted_LL(Node $head): Node
     }
     return $head;
 }
+
+/**
+ * Recursively remove duplicates values from a LL
+ * @param Node|null $head
+ * @return Node|null
+ */
+
+
+function remove_duplicates_recursive(?Node $head): ?Node
+{
+    if ($head === null || $head->next === null) {
+        return $head;
+    }
+    if ($head->data === $head->next->data) {
+        $head->next = $head->next->next;
+    }
+
+    $head->next = remove_duplicates_recursive($head->next);
+
+    return $head;
+}
