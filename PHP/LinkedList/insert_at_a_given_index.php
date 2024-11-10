@@ -10,14 +10,14 @@ use LinkedList\NodeDefinition\Node;
 
 
 /**
- * @param Node $head: Head of the LL
- * @param int $index: Index to insert the new node
- * @param int $value: New node's value
+ * @param Node $head : Head of the LL
+ * @param int $index : Index to insert the new node
+ * @param int $value : New node's value
  * @return Node: The Head of the LL
  */
 function insertNodeAtIndexIteratively(Node $head, int $index, int $value): Node
 {
-    if ($index === 0){
+    if ($index === 0) {
         # insert at the beginning of the LL
         $newNode = new Node($value);
         $newNode->next = $head;
@@ -44,5 +44,26 @@ function insertNodeAtIndexIteratively(Node $head, int $index, int $value): Node
     $newNode->next = $currentNode->next;
     $currentNode->next = $newNode;
 
+    return $head;
+}
+
+
+/**
+ * @param Node|null $head : Head of the LL
+ * @param int $value : New node's value
+ * @param int $index : Index to insert the new node
+ * @return Node
+ */
+
+function insertNodeAtIndexRecursively(?Node $head, int $value, int $index): Node
+{
+
+    if ($index === 0) {
+        $newNode = new Node($value);
+        $newNode->next = $head;
+        return $newNode;
+    }
+
+    $head->next = insertNodeAtIndexRecursively($head->next, $value, $index - 1);
     return $head;
 }

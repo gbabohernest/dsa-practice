@@ -30,3 +30,5 @@ $nodeValueRec = getNodeValueRecursively($a, 7);
 # Node::printLL(remove_duplicates_sorted_LL($a)); # 1 -> 3
 # Node::printLL(remove_duplicates_recursive($a)); # 1 -> 3
 Node::printLL(insertNodeAtIndexIteratively($a, 0, 0)); # 0 -> 1 -> 1 -> 3 -> 3
+echo "<br/>";
+Node::printLL(insertNodeAtIndexRecursively($a, 4, 4));# 1 --> 1 --> 3 --> 3 --> 4
