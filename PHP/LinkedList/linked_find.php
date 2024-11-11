@@ -26,3 +26,11 @@ function LLFindValue(Node $head, int $target): bool
 
     return false;
 }
+
+function LLFindValueRecursively(?Node $head, int $target): ?bool
+{
+    if ($head === null) return false;
+    if ($head->data === $target) return true;
+
+    return LLFindValueRecursively($head->next, $target);
+}
