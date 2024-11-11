@@ -6,47 +6,23 @@
  */
 
 
-class  Node
+use LinkedList\NodeDefinition\Node;
+
+/**
+ * @param Node $head: LinkedList Head Node
+ * @param int $target: Target value
+ * @return bool: Return true if target is found else false
+ */
+function LLFindValue(Node $head, int $target): bool
 {
-    public int $value;
-    public $next;
+    $currentNode = $head;
 
-    public function __construct(int $value)
-    {
-        $this->value = $value;
-        $this->next = null;
-    }
-
-    public static function LL_find_value(Node $head, int $target): bool
-    {
-        $current_node = $head;
-
-        while ($current_node !== null) {
-            if ($current_node->value === $target) return true;
-            $current_node = $current_node->next;
+    while ($currentNode !== null) {
+        if ($currentNode->data === $target){
+            return true;
         }
-
-        return false;
+        $currentNode = $currentNode->next;
     }
 
-    public static function LL_find_value_recursively(?Node $head, int $target): bool
-    {
-        if ($head === null) return false;
-        if ($head->value === $target) return true;
-
-        return self::LL_find_value_recursively($head->next, $target);
-    }
+    return false;
 }
-
-$a = new Node(20);
-$b = new Node(30);
-$c = new Node(40);
-$d = new Node(50);
-
-$a->next = $b;
-$b->next = $c;
-$c->next = $d;
-
-var_dump(Node::LL_find_value($a, 40)); # Output: true
-
-var_dump(Node::LL_find_value_recursively($a, 90)); #Output: false
