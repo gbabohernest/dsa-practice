@@ -8,6 +8,11 @@
 
 use LinkedList\NodeDefinition\Node;
 
+/**
+ * Reverse a LL iteratively
+ * @param Node $head: Head node of the LL
+ * @return Node: New head node of the reversed LL
+ */
 
 function reverseLL(Node $head): Node
 {
@@ -22,4 +27,12 @@ function reverseLL(Node $head): Node
     }
 
     return $prevNode;
+}
+
+function reverseLLRecursively(?Node $head, $prevNode = null): Node
+{
+    if ($head === null) return $prevNode;
+    $next = $head->next;
+    $head->next = $prevNode;
+    return reverseLLRecursively($next, $head);
 }
