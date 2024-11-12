@@ -7,6 +7,7 @@ require_once "../LinkedList/insert_at_a_given_index.php";
 require_once  "../LinkedList/linked_find.php";
 require_once  "../LinkedList/linked_list_values.php";
 require_once "../LinkedList/reverse_a_linked_list.php";
+require_once  "../LinkedList/sum_of_a_linked_list.php";
 
 
 use LinkedList\NodeDefinition\Node;
@@ -50,4 +51,8 @@ echo "<br/>";
 
 #Node::printLL(reverseLL($a)); # 3 -> 3-> 1 -> 1
 echo "<br/>";
-Node::printLL(reverseLLRecursively($a)); # 3 -> 3 -> 1 -> 1
+# Node::printLL(reverseLLRecursively($a)); # 3 -> 3 -> 1 -> 1
+
+echo "<br>";
+$sum = getLLSumRecursively($a);
+var_dump($sum); # 8

@@ -10,7 +10,7 @@ use LinkedList\NodeDefinition\Node;
 
 /**
  * Return the sum of the LL values
- * @param Node $head: Head Node
+ * @param Node $head : Head Node
  * @return int: Sum of LL values
  */
 function getLLSum(Node $head): int
@@ -24,4 +24,11 @@ function getLLSum(Node $head): int
     }
 
     return $sum;
+}
+
+
+function getLLSumRecursively(?Node $head): int
+{
+    if ($head === null) return 0;
+    return $head->data += getLLSumRecursively($head->next);
 }
