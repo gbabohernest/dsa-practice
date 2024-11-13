@@ -4,22 +4,6 @@
  * return the new head of the reversed linked list.
  */
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
-
-const a = new Node('A');
-const b = new Node('B');
-const c = new Node('C');
-const d = new Node('D');
-
-a.next = b;
-b.next = c;
-c.next = d;
-
 /**
  * @param {Node} head
  * @return {Node}
@@ -33,7 +17,7 @@ c.next = d;
  * output: d -> c -> b -> a
  */
 
-const reverseList = (head) => {
+export const reverseList = (head) => {
   let prevNode = null;
   let currentNode = head;
 
@@ -50,17 +34,9 @@ const reverseList = (head) => {
   // Space Complexity = O(1) -> constant extra space for variables
 };
 
-const printList = (head) => {
-  let currentNode = head;
-  while (currentNode !== null) {
-    console.log(currentNode.value);
-    currentNode = currentNode.next;
-  }
-};
-
 // Recursive Approach
 
-const reverseListRecursively = (head, prevNode = null) => {
+export const reverseListRecursively = (head, prevNode = null) => {
   if (head === null) return prevNode;
   const nextNode = head.next;
   head.next = prevNode;
@@ -72,9 +48,3 @@ const reverseListRecursively = (head, prevNode = null) => {
   // Time complexity = O(n) : n = num of nodes
   // Space complexity = O(n) : Due to recursion stack
 };
-
-printList(a); // output: A -> B -> C -> D
-console.log('---------- Reverse List output--------------');
-printList(reverseList(a)); // output: D -> C -> B -> A
-console.log('-------Reverse List Output Recursion--------');
-printList(reverseListRecursively(a)); // output: D -> C -> B -> A

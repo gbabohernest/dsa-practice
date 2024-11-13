@@ -1,6 +1,10 @@
 import Node from './Node/Node.js';
 import { getNodeValue, getNodeValueRecursive } from './get_node_value.js';
 import {
+  reverseList,
+  reverseListRecursively,
+} from './reverse_a_linked_list.js';
+import {
   getSumOfLinkedList,
   getSumOfLinkedListRecursive,
 } from './sum_of_a_linked_list.js';
@@ -41,6 +45,12 @@ newHead = insertNodeAtIndex(newHead, 6, 4);
 
 /***************************************************** */
 
+/*
 console.log('Sum of linked list:');
 console.log(getSumOfLinkedList(newHead)); // 14
 console.log(getSumOfLinkedListRecursive(newHead)); // 14
+*/
+
+console.log('\nReversed linked list:');
+// let reversedHead = reverseList(newHead);
+Node.printList(reverseList(newHead)); // 4->3->3->2->1->1->0
