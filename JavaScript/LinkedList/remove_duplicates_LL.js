@@ -9,62 +9,18 @@
  *  output: [1, 2]
  */
 
-class Node {
-  constructor(data) {
-    this.data = data;
-    this.next = null;
+const removeDupFromSortedLLRecursively = (head) => {
+  // empty or single node list
+  if (head === null || head.next === null) return head;
+
+  if (head.data === head.next.data) {
+    // skip the duplicate
+    head.next = removeDupFromSortedLLRecursively(head.next.next);
+  } else {
+    head.next = removeDupFromSortedLLRecursively(head.next);
   }
 
-  static printLL(head) {
-    let currentNode = head;
-    while (currentNode !== null) {
-      console.log(currentNode.data);
-      currentNode = currentNode.next;
-    }
-  }
+  return head;
+};
 
-  static removeDupFromSortedLLRecursively(head) {
-    // empty or single node list
-    if (head === null || head.next === null) return head;
-
-    if (head.data === head.next.data) {
-      // skip the duplicates
-      head.next = Node.removeDupFromSortedLLRecursively(head.next.next);
-    } else {
-      // move to the next node
-      head.next = Node.removeDupFromSortedLLRecursively(head.next);
-    }
-
-    return head;
-  }
-  static removeDuplicatesFromSortedLLIteratively(head) {
-    if (head === null || head.next === null) return head; // empty or single node list
-
-    let currentNode = head;
-    while (currentNode !== null && currentNode.next !== null) {
-      if (currentNode.data === currentNode.next.data) {
-        //skip this value, since they are the same.
-        currentNode.next = currentNode.next.next;
-      }
-      currentNode = currentNode.next;
-    }
-
-    return head;
-  }
-}
-
-const a = new Node(1);
-const b = new Node(1);
-const c = new Node(2);
-const d = new Node(3);
-const e = new Node(3);
-
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
-// a -> b -> c -> d -> e
-
-//const sortedList = Node.removeDuplicatesFromSortedLLIteratively(a);
-const sortedList = Node.removeDupFromSortedLLRecursively(a);
-Node.printLL(sortedList); // output:  1 -> 2 -> 3
+export default removeDupFromSortedLLRecursively;
