@@ -1,6 +1,10 @@
 import Node from './Node/Node.js';
 import { getNodeValue, getNodeValueRecursive } from './get_node_value.js';
 import {
+  insertNodeAtIndexRec,
+  insertNodeAtIndex,
+} from './insert_a_node_at_index.js';
+import {
   removeDupFromSortedLLRecursively,
   removeDuplicatesFromSortedLLIteratively,
 } from './remove_duplicates_LL.js';
@@ -22,3 +26,10 @@ d.next = e;
 
 console.log(getNodeValue(a, 2)); // 2
 console.log(getNodeValueRecursive(a, 3)); // 3
+
+console.log('\n');
+// insert a new node at index 1
+const newHead = insertNodeAtIndexRec(a, 0, 0);
+Node.printList(newHead); // 0 -> 1 -> 1 -> 2 -> 3 -> 3
+console.log('------------------------------------');
+Node.printList(insertNodeAtIndex(newHead, 6, 4)); // 0 -> 1 -> 1 -> 2 -> 3 -> 3 ->4
