@@ -9,7 +9,7 @@
  *  output: [1, 2]
  */
 
-const removeDupFromSortedLLRecursively = (head) => {
+export const removeDupFromSortedLLRecursively = (head) => {
   // empty or single node list
   if (head === null || head.next === null) return head;
 
@@ -23,4 +23,24 @@ const removeDupFromSortedLLRecursively = (head) => {
   return head;
 };
 
-export default removeDupFromSortedLLRecursively;
+/**
+ * Removes duplicates from a LL
+ * @param {*} head: Head of the LinkedList
+ */
+export const removeDuplicatesFromSortedLLIteratively = (head) => {
+  if (head === null || head.next === null) return head;
+
+  let currentNode = head;
+
+  while (currentNode !== null && currentNode.next !== null) {
+    if (currentNode.data === currentNode.next.data) {
+      // skip this value, since they are the same.
+      currentNode.next = currentNode.next.next;
+    }
+    currentNode = currentNode.next;
+  }
+
+  return head;
+};
+
+// export default removeDupFromSortedLLRecursively;
