@@ -16,3 +16,12 @@ export const getNodeValue = (head, index) => {
 
   return null;
 };
+
+// Recursive Approach
+
+export const getNodeValueRecursive = (head, index) => {
+  if (head === null) return null;
+  if (index === 0) return head.data;
+
+  return getNodeValueRecursive(head.next, index - 1);
+};
