@@ -8,7 +8,7 @@
  * @param: {NodeDefinition} head
  * @return {number} sum
  */
-export const getSumOfLinkedList = (head) => {
+export const getSumOfLL = (head) => {
   let sum = 0;
   let currentNode = head;
 
@@ -31,7 +31,7 @@ export const getSumOfLinkedList = (head) => {
   Time complexity: O(n) -> n is the number of nodes
   space complexity: O(n) -> due to the recursion stack 
 */
-export const getSumOfLinkedListRecursive = (head) => {
+export const getSumOfLLRec = (head) => {
   if (head === null) return 0;
-  return head.data + getSumOfLinkedListRecursive(head.next);
+  return head.data + getSumOfLLRec(head.next);
 };

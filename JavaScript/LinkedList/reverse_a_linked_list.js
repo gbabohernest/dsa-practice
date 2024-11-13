@@ -1,5 +1,5 @@
 /**
- * Write a function, reverseList, that takes in the head of a linked list as an argument.
+ * Write a function, revList, that takes in the head of a linked list as an argument.
  * The function should reverse the order of the nodes in the linked list in-place and
  * return the new head of the reversed linked list.
  */
@@ -17,7 +17,7 @@
  * output: d -> c -> b -> a
  */
 
-export const reverseList = (head) => {
+export const revList = (head) => {
   let prevNode = null;
   let currentNode = head;
 
@@ -36,11 +36,11 @@ export const reverseList = (head) => {
 
 // Recursive Approach
 
-export const reverseListRecursively = (head, prevNode = null) => {
+export const revListRec = (head, prevNode = null) => {
   if (head === null) return prevNode;
   const nextNode = head.next;
   head.next = prevNode;
-  return reverseListRecursively(nextNode, head);
+  return revListRec(nextNode, head);
 
   //  null   a   ->     b    ->    c   ->   d
   //  prev   head     next
