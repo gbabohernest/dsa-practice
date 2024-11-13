@@ -5,33 +5,17 @@
  * Iterative & Recursive approach
  */
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
-
-const a = new Node(2);
-const b = new Node(4);
-const c = new Node(22);
-const d = new Node(55);
-
-a.next = b;
-b.next = c;
-c.next = d;
-
 /**
  * Iterative Approach
  * @param {Node} head
  * @return {Array} values
  */
-const addLinkedListValueToArray = (head) => {
+export const addLinkedListValueToArray = (head) => {
   let currentNode = head;
   let values = [];
 
   while (currentNode !== null) {
-    values.push(currentNode.value);
+    values.push(currentNode.data);
     currentNode = currentNode.next;
   }
 
@@ -49,7 +33,7 @@ const addLinkedListValueToArray = (head) => {
  * @return {Array} values
  */
 
-const linkedListValues = (head) => {
+export const linkedListValues = (head) => {
   const values = [];
   recursiveHelper(head, values);
   return values;
@@ -60,19 +44,14 @@ const linkedListValues = (head) => {
  * @param {Node} head
  * @param {Array} values
  */
-const recursiveHelper = (head, values) => {
+export const recursiveHelper = (head, values) => {
   if (head === null) return;
-  values.push(head.value);
+  values.push(head.data);
   recursiveHelper(head.next, values);
 };
 
 // Recursive version with shorter syntax
-const recursionShorterVersion = (head) => {
+export const recursionShorterVersion = (head) => {
   if (head === null) return [];
-  return [head.value, ...recursionShorterVersion(head.next)];
+  return [head.data, ...recursionShorterVersion(head.next)];
 };
-console.log(addLinkedListValueToArray(a));
-console.log(linkedListValues(a));
-console.log(recursionShorterVersion(a));
-
-// Output: [2, 4, 22, 55]

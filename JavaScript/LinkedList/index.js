@@ -16,6 +16,11 @@ import {
   removeDupFromSortedLLRecursively,
   removeDuplicatesFromSortedLLIteratively,
 } from './remove_duplicates_LL.js';
+import {
+  addLinkedListValueToArray,
+  linkedListValues,
+  recursionShorterVersion,
+} from './linked_list_values.js';
 
 // create nodes
 const a = new Node(1);
@@ -51,6 +56,10 @@ console.log(getSumOfLinkedList(newHead)); // 14
 console.log(getSumOfLinkedListRecursive(newHead)); // 14
 */
 
-console.log('\nReversed linked list:');
+//console.log('\nReversed linked list:');
 // let reversedHead = reverseList(newHead);
-Node.printList(reverseList(newHead)); // 4->3->3->2->1->1->0
+//Node.printList(reverseList(newHead)); // 4->3->3->2->1->1->0
+
+//console.log(addLinkedListValueToArray(newHead)); //[0, 1, 1, 2, 3, 3, 4]
+//console.log(linkedListValues(newHead));
+console.log(recursionShorterVersion(newHead));
