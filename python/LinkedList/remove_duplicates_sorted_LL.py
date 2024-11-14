@@ -17,79 +17,43 @@ input: head = [1, 1, 2, 3, 3]
 output: [1, 2, 3]
 """
 
-
-class Node:
-    def __init__(self, data: int):
-        self.data = data
-        self.next = None
-
-    @staticmethod
-    def remove_dup_recursively(head: 'Node') -> 'Node' or None:
-        """
-        Recursively remove duplicates from a sorted List.
-        :param head: head node
-        :return: new head of sorted list
-        """
-
-        if head is None or head.next is None: return head
-
-        if head.data == head.next.data:
-            # skip duplicate
-            head.next = Node.remove_dup_recursively(head.next.next)
-        else:
-            head.next = Node.remove_dup_recursively(head.next)
-
-        return head
-
-    @staticmethod
-    def remove_duplicates_frm_sorted_linked_list(head: 'Node') -> 'Node' or None:
-        """
-        Removes duplicates from a sorted single linked list
-        :param head: head node of the list:
-        :return: new head of sorted list
-        """
-
-        if head is None or head.next is None: return head
-
-        current_node = head
-
-        while current_node is not None and current_node.next is not None:
-            if current_node.data == current_node.next.data:
-                # remove duplicate value
-                current_node.next = current_node.next.next
-
-            current_node = current_node.next
-
-        return head
-
-    @staticmethod
-    def print_ll(head: 'Node') -> None:
-        current = head
-
-        while current is not None:
-            if current.next is None:
-                # last node in the list
-                print(current.data, end="")
-            else:
-
-                print(current.data, end=" ==> ")
-
-            current = current.next
-
-        print()
+from Node.Node import Node
 
 
-a = Node(1)
-b = Node(1)
-c = Node(2)
-d = Node(2)
-e = Node(3)
-a.next = b
-b.next = c
-c.next = d
-d.next = e
+def remove_dup_recursively(head: Node) -> Node or None:
+    """
+    Recursively remove duplicates from a sorted List.
+    :param head: head node
+    :return: new head of sorted list
+    """
 
-# new_sorted_list = Node.remove_duplicates_frm_sorted_linked_list(a)
+    if head is None or head.next is None: return head
 
-new_sorted_list = Node.remove_dup_recursively(a)
-Node.print_ll(new_sorted_list)  # output: 1 ==> 2 ==> 3
+    if head.data == head.next.data:
+        # skip duplicate
+        head.next = remove_dup_recursively(head.next.next)
+    else:
+        head.next = remove_dup_recursively(head.next)
+
+    return head
+
+
+def remove_duplicates(head: 'Node') -> 'Node' or None:
+    """
+    Removes duplicates from a sorted single linked list
+    :param head: head node of the list:
+    :return: new head of sorted list
+    """
+
+    if head is None or head.next is None: return head
+
+    current_node = head
+
+    while current_node is not None and current_node.next is not None:
+        if current_node.data == current_node.next.data:
+            # remove duplicate value
+            current_node.next = current_node.next.next
+
+        current_node = current_node.next
+
+    return head
