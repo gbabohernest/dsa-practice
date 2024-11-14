@@ -8,6 +8,7 @@ from linked_list_values import linked_list_values, linked_list_values_recursivel
 from middle_node import middle_node, middle_node_rec
 from remove_duplicates_sorted_LL import remove_duplicates, remove_dup_recursively
 from reverse_a_linked_list import reverse_list, reverse_list_recursively
+from sum_of_a_linked_list import cal_sum_of_linked_list, cal_sum_of_ll_rec
 
 a = Node(1)
 b = Node(1)
@@ -21,6 +22,8 @@ c.next = d
 d.next = e
 
 Node.print_linked_list(a)  # 1 ==> 1 ==> 2 ==> 3 ==> 3
+sumLL = cal_sum_of_ll_rec(a)
+print(sumLL)  # 10
 
 # print(get_node_value_recursively(a, 2))  # 2
 # print(get_node_value(a, 3))  # 3
@@ -38,5 +41,4 @@ middle = middle_node_rec(a)
 newHead = remove_dup_recursively(a)
 print("New list without duplicates")
 Node.print_linked_list(newHead)  # 1 ==> 2 ==> 3 ==> 4
-Node.print_linked_list(reverse_list(a)) # 4 ==> 3 ==> 2 ==> 1
-
+Node.print_linked_list(reverse_list(a))  # 4 ==> 3 ==> 2 ==> 1
