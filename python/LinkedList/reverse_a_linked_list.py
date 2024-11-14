@@ -6,30 +6,15 @@ The function should reverse the order of the nodes in the linked list in-place a
 return the new head of the reversed linked list.
 """
 
-
-from typing import Any
-
-class Node:
-    def __init__(self, value: Any):
-        self.value = value
-        self.next = None
+from Node.Node import Node
 
 
-# Nodes
-a = Node('A')
-b = Node('B')
-c = Node('C')
-d = Node('D')
-
-a.next = b; b.next = c; c.next = d   # a  --->  b ---> c ---> d ---> None
-
-
-def  reverse_list(head : Node) -> Node | None:
+def reverse_list(head: Node) -> Node | None:
     """
     Reverse a Linked List
     None <--- a  <--- b  <---  c  <--- d
     None      a --->  b --->   c --->  d ----> None
-                                      prev     curr     next
+    prev     curr     next
     :param head:
     :return: new head Node
     """
@@ -46,25 +31,9 @@ def  reverse_list(head : Node) -> Node | None:
     return prev_node
 
 
-
-
-def reverse_list_recursively(head: Node, prev_node = None) :
+def reverse_list_recursively(head: Node, prev_node=None):
     if head is None: return prev_node
     next_node = head.next
     head.next = prev_node
 
     return reverse_list_recursively(next_node, head)
-
-
-def print_list(head : Node):
-    current = head
-    while current is not None:
-        print(current.value)
-        current = current.next
-
-
-
-print_list(reverse_list(a))  # D C B A
-
-val = reverse_list_recursively(a)
-print_list(val)  # D C B A

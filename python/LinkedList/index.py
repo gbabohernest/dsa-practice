@@ -7,6 +7,7 @@ from linked_list_find import linked_list_find_target, linked_list_find_target_re
 from linked_list_values import linked_list_values, linked_list_values_recursively
 from middle_node import middle_node, middle_node_rec
 from remove_duplicates_sorted_LL import remove_duplicates, remove_dup_recursively
+from reverse_a_linked_list import reverse_list, reverse_list_recursively
 
 a = Node(1)
 b = Node(1)
@@ -37,3 +38,5 @@ middle = middle_node_rec(a)
 newHead = remove_dup_recursively(a)
 print("New list without duplicates")
 Node.print_linked_list(newHead)  # 1 ==> 2 ==> 3 ==> 4
+Node.print_linked_list(reverse_list(a)) # 4 ==> 3 ==> 2 ==> 1
+
