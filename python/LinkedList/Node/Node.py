@@ -19,10 +19,11 @@ class Node:
         current_node = head
 
         while current_node is not None:
-            print(current_node.data, end=" ==> ")
-
-            if current_node.next is None:
+            if current_node.next is not None:
+                print(current_node.data, end=" ==> ")
+            else:
                 print(current_node.data)
+
             current_node = current_node.next
 
 
