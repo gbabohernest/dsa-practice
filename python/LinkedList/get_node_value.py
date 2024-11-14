@@ -8,7 +8,7 @@ there is no node at the given index, then return null.
 from Node.Node import Node
 
 
-def get_node_value(head: Node, index:int) -> int | None:
+def get_node_value(head: Node, index: int) -> int | None:
     current_node = head
     counter = 0
 
@@ -20,11 +20,9 @@ def get_node_value(head: Node, index:int) -> int | None:
     return None
 
 
-
 # Recursive Approach
 
 def get_node_value_recursively(head: Node, index: int) -> int | None:
-
     if head is None: return None
     if index == 0: return head.data
 
