@@ -30,3 +30,21 @@ def middle_node(head: Node) -> Node:
         slow_pointer = slow_pointer.next
 
     return slow_pointer
+
+
+def middle_node_rec(head: Node) -> Node:
+    """
+      Return the middle node of a linked list using a recursive approach.
+      :param head: The head node of the linked list.
+      :return: The middle node.
+    """
+
+    def rec_helper(slow_pointer: Node, fast_pointer: Node) -> Node:
+        # Base case: if fast pointer reaches at the end, slow
+        # pointer is at the middle
+        if fast_pointer is None or fast_pointer.next is None:
+            return slow_pointer
+
+        return rec_helper(slow_pointer.next, fast_pointer.next.next)
+
+    return rec_helper(head, head)
